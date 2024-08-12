@@ -1,24 +1,18 @@
 import { useState } from 'react';
-import { register } from 'ol/proj/proj4.js';
-import { TileGrid } from 'ol/tilegrid.js';
-
-import CartoDB from 'ol/source/CartoDB';
 
 import '../styles/MapContainer.css';
-import { fromLonLat, Projection } from 'ol/proj';
+import { fromLonLat } from 'ol/proj';
 import Map from './map/Map';
 import Layers from './controls/Layers';
 import Zoom from './controls/Zoom';
 import POIs from './controls/POIs';
 import { MapProvider } from './map/MapContext';
-import TileLayer from 'ol/layer/Tile';
-import { OSM, TileWMS, XYZ } from 'ol/source';
 import View from './controls/View';
-import { openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer } from './controls/LayerOptions';
 import { MapPrimeProvider } from './map/MapPrimeContext';
 import MapPrimeComponent from './controls/MapPrime';
 import MpLayers from './controls/MpLayers';
 import { layerMappings } from './controls/MPLayerOptions';
+import { openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer } from './controls/LayerOptions';
 
 /** POI 리스트 */
 const poiList = [

@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useMap } from '../map/MapPrimeContext'; // 가정: useMap 훅이 정의되어 있음
 import { backgroundLayer, layerMappings } from '../controls/MPLayerOptions';
 

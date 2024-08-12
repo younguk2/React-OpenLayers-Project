@@ -1,6 +1,6 @@
 // layers.js
 import TileLayer from 'ol/layer/Tile';
-import { XYZ, OSM, TileWMS } from 'ol/source';
+import { XYZ, OSM } from 'ol/source';
 
 const openStreetMap = new TileLayer({
 	title: 'OpenStreetMap',
