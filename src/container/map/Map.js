@@ -3,18 +3,7 @@ import { useMap } from './MapContext';
 import * as ol from 'ol';
 import { fromLonLat } from 'ol/proj';
 
-//options 인자 없을 경우 사용할 기본 옵션
-const defaultOptions = {
-	view: new ol.View({
-		zoom: 16,
-		center: fromLonLat([126.972656, 37.5516258]), //서울역
-	}),
-	layers: [],
-	controls: [],
-	overlays: [],
-};
-
-export default function Map({ options = defaultOptions }) {
+export default function Map({ options }) {
 	const mapRef = useRef(null);
 	const { setMap } = useMap();
 
@@ -27,7 +16,7 @@ export default function Map({ options = defaultOptions }) {
 		return () => {
 			map.setTarget();
 		};
-	}, []);
+	}, [options]);
 
 	return <div className='map-container' ref={mapRef}></div>;
 }
