@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import 'ol/ol.css';
 import { Map, View } from 'ol';
 import { fromLonLat } from 'ol/proj';
-import { useMap } from '../map/MapPrimeContext';
-import { backgroundLayer } from './MPLayerOptions';
+import { useMap } from './MapPrimeContext';
+import { backgroundLayer } from '../controls/MPLayerOptions';
 
 const defaultOptions = {
 	view: new View({
-		zoom: 16,
+		zoom: 12,
 		center: fromLonLat([126.972656, 37.5516258]), // 서울역
 	}),
 	layers: [backgroundLayer],

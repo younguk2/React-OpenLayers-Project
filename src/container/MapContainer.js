@@ -9,7 +9,7 @@ import POIs from './controls/POIs';
 import { MapProvider } from './map/MapContext';
 import View from './controls/View';
 import { MapPrimeProvider } from './map/MapPrimeContext';
-import MapPrimeComponent from './controls/MapPrime';
+import MapPrimeComponent from './map/MapPrime';
 import MpLayers from './controls/MpLayers';
 import { layerMappings } from './controls/MPLayerOptions';
 import { openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer } from './controls/LayerOptions';
