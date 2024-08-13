@@ -1,11 +1,12 @@
 ## 프로그램 구조도
 
-![alt text](image-10.png)
-
-## 다양한 지도 타일 배경을 사용 가능
-
 ![alt text](image-6.png)
-![alt text](image-7.png)
+
+## 지명,좌표를 통한 지도 이동 , 지도 그리기 기능, 다양한 배경타일 제공
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## 서울 내 경찰서 소방서 지하철역을 지도에 표현
 
@@ -13,6 +14,6 @@
 ![alt text](image-4.png)
 ![alt text](image-5.png)
 
-## GIS - React로 MapPrime과 OpenLayers를 사용하여 만든 지도 웹 (Feat. MapPrime)
+## 지도 다운로드 기능 지원
 
-![alt text](image-2.png)
+![alt text](image-7.png)

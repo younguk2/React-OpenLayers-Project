@@ -21,17 +21,21 @@ export default function Map({ options, center }) {
 	const drawInteractionRef = useRef();
 
 	useEffect(() => {
+		// 벡터 레이어의 zIndex를 높게 설정하여 최상위에 위치시키기
+		const vectorLayer = new VectorLayer({
+			source: vectorSource,
+			zIndex: 9999, // zIndex를 높게 설정하여 항상 위에 그려지도록 함
+		});
+
 		const map = new ol.Map({
 			target: mapRef.current,
 			layers: [
-				...options.layers,
-				new VectorLayer({
-					source: vectorSource,
-				}),
+				...options.layers, // 다른 레이어들
+				vectorLayer, // zIndex가 가장 높은 벡터 레이어
 			],
 			view: new ol.View({
 				center: fromLonLat(center),
-				zoom: options.zoom || 10,
+				zoom: options.zoom || 16,
 			}),
 		});
 
@@ -41,15 +45,16 @@ export default function Map({ options, center }) {
 			map.setTarget(null);
 		};
 	}, [options, center, vectorSource, setMap]);
+
 	const createStyle = (type) => {
-		if (type === 'Circle') {
+		if (type === 'LineString') {
 			return new Style({
 				stroke: new Stroke({
-					color: 'blue',
-					width: 3,
+					color: 'red',
+					width: 10,
 				}),
 				fill: new Fill({
-					color: 'rgba(0, 0, 255, 0.1)',
+					color: 'red',
 				}),
 			});
 		} else {
@@ -61,6 +66,7 @@ export default function Map({ options, center }) {
 			});
 		}
 	};
+
 	const startDrawing = () => {
 		if (drawInteractionRef.current) {
 			return; // 이미 그리기 모드일 경우 아무 작업도 하지 않음
@@ -77,12 +83,6 @@ export default function Map({ options, center }) {
 		});
 	};
 
-	const createCircleFeature = (center, radius) => {
-		const circle = new CircleGeometry(center, radius);
-		return new Feature(circle);
-	};
-
-	// 원형을 그리기 위한 Draw 상호작용 생성
 	const startDrawingCircle = () => {
 		if (drawInteractionRef.current) {
 			return; // 이미 그리기 모드일 경우 아무 작업도 하지 않음
@@ -90,7 +90,7 @@ export default function Map({ options, center }) {
 
 		const draw = new Draw({
 			source: vectorSource,
-			type: 'Polygon', // Polygon을 사용하여 원형을 근사
+			type: 'Polygon',
 			style: new Style({
 				stroke: new Stroke({
 					color: 'rgba(240, 79, 79, 0.9)',
@@ -105,8 +105,6 @@ export default function Map({ options, center }) {
 		drawInteractionRef.current = draw;
 		setMap((prevMap) => {
 			prevMap.addInteraction(draw);
-			console.log('추가된 인터렉션');
-			console.log(draw);
 			return prevMap;
 		});
 	};

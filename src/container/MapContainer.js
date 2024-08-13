@@ -18,6 +18,7 @@ import { View } from 'ol';
 import SearchAddr from './controls/SearchAddr';
 import SearchXY from './controls/SearchXY';
 import DownloadMap from './controls/DownloadMap';
+import DownloadMapPrime from './controls/DownloadMapPrime';
 /** POI 리스트 */
 const poiList = [
 	{ name: '서울역', coords: fromLonLat([126.972656, 37.5516258]), zoom: 16 },
@@ -28,9 +29,7 @@ const poiList = [
 export default function MapContainer() {
 	const [layers, setLayers] = useState([openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer]);
 	const [pois, setPOIs] = useState(poiList);
-
 	const [mplayers, setMPlayers] = useState([]); // 현재 활성화된 레이어 상태
-
 	const [center, setCenter] = useState([126.972656, 37.5516258]); // 서울역 초기 위치
 	const [zoom, setZoom] = useState(16);
 
@@ -40,7 +39,7 @@ export default function MapContainer() {
 
 	const handleLocationFound = ({ lat, lng }) => {
 		setCenter([lng, lat]);
-		setZoom(16); // 지도를 찾은 위치로 줌 설정 (필요에 따라 조정 가능)
+		setZoom(11); // 지도를 찾은 위치로 줌 설정 (필요에 따라 조정 가능)
 	};
 
 	const options = {
@@ -52,6 +51,7 @@ export default function MapContainer() {
 		controls: [],
 		overlays: [],
 	};
+
 	return (
 		<>
 			<MapProvider>
@@ -68,6 +68,7 @@ export default function MapContainer() {
 			<MapPrimeProvider>
 				<MapPrimeComponent />
 				<MpLayers layers={mplayers} onLayerChange={handleLayerChange} availableLayers={Object.keys(layerMappings)} />
+				<DownloadMapPrime />
 			</MapPrimeProvider>
 		</>
 	);

@@ -8,7 +8,7 @@ export const backgroundLayer = new TileLayer({
 
 // Define the WMS layers
 export const layerMappings = {
-	policestation: new TileLayer({
+	policestation_red: new TileLayer({
 		source: new TileWMS({
 			url: 'http://localhost:3004/MapPrimeServer/map/wms',
 			params: {
@@ -16,7 +16,7 @@ export const layerMappings = {
 				VERSION: '1.3.0',
 				REQUEST: 'GetMap',
 				LAYERS: 'mapprime:policestation',
-				STYLES: 'policestation-style',
+				STYLES: 'policestation-style-red',
 				CRS: 'EPSG:5174',
 				WIDTH: 912,
 				HEIGHT: 815,
@@ -24,9 +24,29 @@ export const layerMappings = {
 				FORMAT: 'image/png',
 			},
 			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
 		}),
 	}),
-	firestation: new TileLayer({
+	policestation_blue: new TileLayer({
+		source: new TileWMS({
+			url: 'http://localhost:3004/MapPrimeServer/map/wms',
+			params: {
+				SERVICE: 'WMS',
+				VERSION: '1.3.0',
+				REQUEST: 'GetMap',
+				LAYERS: 'mapprime:policestation',
+				STYLES: 'policestation-style-blue',
+				CRS: 'EPSG:5174',
+				WIDTH: 912,
+				HEIGHT: 815,
+				BBOX: '14111379.611,4498970.958,14158050.516,4537306.912',
+				FORMAT: 'image/png',
+			},
+			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
+		}),
+	}),
+	firestation_red: new TileLayer({
 		source: new TileWMS({
 			url: 'http://localhost:3004/MapPrimeServer/map/wms',
 			params: {
@@ -34,7 +54,7 @@ export const layerMappings = {
 				VERSION: '1.3.0',
 				REQUEST: 'GetMap',
 				LAYERS: 'mapprime:firestation',
-				STYLES: 'firestation-style',
+				STYLES: 'firestation-style-red',
 				CRS: 'EPSG:5174',
 				WIDTH: 912,
 				HEIGHT: 815,
@@ -42,9 +62,29 @@ export const layerMappings = {
 				FORMAT: 'image/png',
 			},
 			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
 		}),
 	}),
-	subwaystation: new TileLayer({
+	firestation_blue: new TileLayer({
+		source: new TileWMS({
+			url: 'http://localhost:3004/MapPrimeServer/map/wms',
+			params: {
+				SERVICE: 'WMS',
+				VERSION: '1.3.0',
+				REQUEST: 'GetMap',
+				LAYERS: 'mapprime:firestation',
+				STYLES: 'firestation-style-blue',
+				CRS: 'EPSG:5174',
+				WIDTH: 912,
+				HEIGHT: 815,
+				BBOX: '14111379.611,4498970.958,14158050.516,4537306.912',
+				FORMAT: 'image/png',
+			},
+			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
+		}),
+	}),
+	subwaystation_red: new TileLayer({
 		source: new TileWMS({
 			url: 'http://localhost:3004/MapPrimeServer/map/wms',
 			params: {
@@ -52,7 +92,7 @@ export const layerMappings = {
 				VERSION: '1.3.0',
 				REQUEST: 'GetMap',
 				LAYERS: 'mapprime:subway_station',
-				STYLES: 'subwaystation-style',
+				STYLES: 'subwaystation-style-red',
 				CRS: 'EPSG:5174',
 				WIDTH: 912,
 				HEIGHT: 815,
@@ -60,6 +100,26 @@ export const layerMappings = {
 				FORMAT: 'image/png',
 			},
 			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
+		}),
+	}),
+	subwaystation_blue: new TileLayer({
+		source: new TileWMS({
+			url: 'http://localhost:3004/MapPrimeServer/map/wms',
+			params: {
+				SERVICE: 'WMS',
+				VERSION: '1.3.0',
+				REQUEST: 'GetMap',
+				LAYERS: 'mapprime:subway_station',
+				STYLES: 'subwaystation-style-blue',
+				CRS: 'EPSG:5174',
+				WIDTH: 912,
+				HEIGHT: 815,
+				BBOX: '14111379.611,4498970.958,14158050.516,4537306.912',
+				FORMAT: 'image/png',
+			},
+			serverType: 'geoserver',
+			crossOrigin: 'anonymous',
 		}),
 	}),
 };
