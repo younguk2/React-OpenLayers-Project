@@ -21,7 +21,7 @@ export default function View() {
 		<div className='view-container'>
 			<div>줌 레벨 : {mapView.zoom}</div>
 			<div>
-				{mapView.center[0]} / {mapView.center[1]}
+				경도: {mapView.center[1]} &nbsp;&nbsp;&nbsp; 위도: {mapView.center[0]}
 			</div>
 		</div>
 	);

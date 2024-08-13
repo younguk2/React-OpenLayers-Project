@@ -8,6 +8,34 @@ import VectorLayer from 'ol/layer/Vector';
 import { Style, Stroke, Fill } from 'ol/style';
 import { getLength, getArea } from 'ol/sphere'; // ol/sphere 모듈을 추가
 import '../../styles/Map.css';
+import Modal from 'react-modal'; // react-modal 임포트
+
+// 모달 스타일 설정
+const customStyles = {
+	content: {
+		width: '25vw',
+		top: '50%',
+		left: '50%',
+		right: 'auto',
+		bottom: 'auto',
+		marginRight: '-50%',
+		transform: 'translate(-50%, -50%)',
+	},
+};
+
+const modalTitleStyle = {
+	fontSize: '24px',
+	fontWeight: 'bold',
+	color: '#333',
+	marginBottom: '10px',
+};
+
+const modalContentStyle = {
+	fontSize: '18px',
+	color: '#555',
+};
+
+Modal.setAppElement('#root');
 
 export default function Map({ options, center }) {
 	const mapRef = useRef(null);
@@ -19,7 +47,8 @@ export default function Map({ options, center }) {
 	const clearRef = useRef(null);
 	const drawInteractionRef = useRef();
 
-	const [measurements, setMeasurements] = useState({ length: 0, area: 0 });
+	const [modalIsOpen, setIsOpen] = useState(false);
+	const [message, setMessage] = useState('');
 
 	useEffect(() => {
 		const vectorLayer = new VectorLayer({
@@ -48,7 +77,7 @@ export default function Map({ options, center }) {
 			return new Style({
 				stroke: new Stroke({
 					color: 'red',
-					width: 7,
+					width: 10,
 				}),
 				fill: new Fill({
 					color: 'red',
@@ -75,7 +104,8 @@ export default function Map({ options, center }) {
 		});
 		draw.on('drawend', (event) => {
 			const length = getLength(event.feature.getGeometry());
-			setMeasurements({ length, area: 0 });
+			setMessage(`길이: ${length.toFixed(2)} meters`);
+			setIsOpen(true);
 		});
 		drawInteractionRef.current = draw;
 		setMap((prevMap) => {
@@ -104,7 +134,8 @@ export default function Map({ options, center }) {
 		});
 		draw.on('drawend', (event) => {
 			const area = getArea(event.feature.getGeometry());
-			setMeasurements({ length: 0, area });
+			setMessage(`면적: ${area.toFixed(2)} square meters`);
+			setIsOpen(true);
 		});
 		drawInteractionRef.current = draw;
 		setMap((prevMap) => {
@@ -115,7 +146,6 @@ export default function Map({ options, center }) {
 
 	const clearLines = () => {
 		vectorSource.clear();
-		setMeasurements({ length: 0, area: 0 });
 		if (drawInteractionRef.current) {
 			setMap((prevMap) => {
 				prevMap.removeInteraction(drawInteractionRef.current);
@@ -157,10 +187,11 @@ export default function Map({ options, center }) {
 			<button id='clear-button' ref={clearRef}>
 				지우기
 			</button>
-			<div className='measure'>
-				{measurements.length > 0 && <p>길이: {measurements.length.toFixed(2)} meters</p>}
-				{measurements.area > 0 && <p>면적: {measurements.area.toFixed(2)} square meters</p>}
-			</div>
+			<Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)} style={customStyles} contentLabel='측정 결과'>
+				<h2 style={modalTitleStyle}>측정 결과</h2>
+				<p style={modalContentStyle}>{message}</p>
+				<button onClick={() => setIsOpen(false)}>닫기</button>
+			</Modal>
 		</div>
 	);
 }
