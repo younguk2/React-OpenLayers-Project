@@ -9,7 +9,7 @@ export default function SearchAddr({ onLocationFound }) {
 		try {
 			const response = await axios.get(`https://dapi.kakao.com/v2/local/search/address.json?query=${address}`, {
 				headers: {
-					Authorization: 'KakaoAK 773b35a2ad7d22737bdbb20d69f15f7e', // 개인 카카오 API 키 입력
+					Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_API_KEY}`, // 개인 카카오 API 키 입력
 				},
 			});
 
