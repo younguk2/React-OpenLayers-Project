@@ -1,6 +1,6 @@
 ## 프로그램 구조도
 
-![alt text](image-8.png)
+![alt text](image-10.png)
 
 ## 다양한 지도 타일 배경을 사용 가능
 
@@ -13,8 +13,6 @@
 ![alt text](image-4.png)
 ![alt text](image-5.png)
 
-## GIS - React로 MapPrime과 OpenLayers를 사용하여 만든 지도 웹
-
-## Feat MapPrime
+## GIS - React로 MapPrime과 OpenLayers를 사용하여 만든 지도 웹 (Feat. MapPrime)
 
 ![alt text](image-2.png)
