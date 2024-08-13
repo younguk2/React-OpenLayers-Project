@@ -1,5 +1,5 @@
 import { useMap } from '../map/MapContext';
-
+import '../../styles/POIs.css';
 export default function POIs({ pois }) {
 	const { map } = useMap(); // map element
 
