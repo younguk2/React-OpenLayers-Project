@@ -84,10 +84,10 @@ export default function Map({ options, center }) {
 		<div>
 			<div className='map-container' ref={mapRef}></div>
 			<button id='draw-button' ref={drawRef}>
-				Draw Line
+				선 그리기
 			</button>
 			<button id='clear-button' ref={clearRef}>
-				Clear Lines
+				선 지우기
 			</button>
 		</div>
 	);

@@ -28,7 +28,7 @@ export default function SearchAddr({ onLocationFound }) {
 	return (
 		<div>
 			<input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='지명을 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
-			<button onClick={handleSearch}>Search</button>
+			<button onClick={handleSearch}>검색</button>
 		</div>
 	);
 }
