@@ -6,8 +6,7 @@ import { Draw } from 'ol/interaction';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import { Style, Stroke, Fill } from 'ol/style';
-import { Circle as CircleGeometry, Point } from 'ol/geom';
-import { Feature } from 'ol';
+import { getLength, getArea } from 'ol/sphere'; // ol/sphere 모듈을 추가
 import '../../styles/Map.css';
 
 export default function Map({ options, center }) {
@@ -20,19 +19,17 @@ export default function Map({ options, center }) {
 	const clearRef = useRef(null);
 	const drawInteractionRef = useRef();
 
+	const [measurements, setMeasurements] = useState({ length: 0, area: 0 });
+
 	useEffect(() => {
-		// 벡터 레이어의 zIndex를 높게 설정하여 최상위에 위치시키기
 		const vectorLayer = new VectorLayer({
 			source: vectorSource,
-			zIndex: 9999, // zIndex를 높게 설정하여 항상 위에 그려지도록 함
+			zIndex: 9999,
 		});
 
 		const map = new ol.Map({
 			target: mapRef.current,
-			layers: [
-				...options.layers, // 다른 레이어들
-				vectorLayer, // zIndex가 가장 높은 벡터 레이어
-			],
+			layers: [...options.layers, vectorLayer],
 			view: new ol.View({
 				center: fromLonLat(center),
 				zoom: options.zoom || 16,
@@ -51,7 +48,7 @@ export default function Map({ options, center }) {
 			return new Style({
 				stroke: new Stroke({
 					color: 'red',
-					width: 10,
+					width: 7,
 				}),
 				fill: new Fill({
 					color: 'red',
@@ -69,12 +66,16 @@ export default function Map({ options, center }) {
 
 	const startDrawing = () => {
 		if (drawInteractionRef.current) {
-			return; // 이미 그리기 모드일 경우 아무 작업도 하지 않음
+			return;
 		}
 		const draw = new Draw({
 			source: vectorSource,
 			type: 'LineString',
 			style: createStyle('LineString'),
+		});
+		draw.on('drawend', (event) => {
+			const length = getLength(event.feature.getGeometry());
+			setMeasurements({ length, area: 0 });
 		});
 		drawInteractionRef.current = draw;
 		setMap((prevMap) => {
@@ -85,7 +86,7 @@ export default function Map({ options, center }) {
 
 	const startDrawingCircle = () => {
 		if (drawInteractionRef.current) {
-			return; // 이미 그리기 모드일 경우 아무 작업도 하지 않음
+			return;
 		}
 
 		const draw = new Draw({
@@ -101,7 +102,10 @@ export default function Map({ options, center }) {
 				}),
 			}),
 		});
-
+		draw.on('drawend', (event) => {
+			const area = getArea(event.feature.getGeometry());
+			setMeasurements({ length: 0, area });
+		});
 		drawInteractionRef.current = draw;
 		setMap((prevMap) => {
 			prevMap.addInteraction(draw);
@@ -111,6 +115,7 @@ export default function Map({ options, center }) {
 
 	const clearLines = () => {
 		vectorSource.clear();
+		setMeasurements({ length: 0, area: 0 });
 		if (drawInteractionRef.current) {
 			setMap((prevMap) => {
 				prevMap.removeInteraction(drawInteractionRef.current);
@@ -152,6 +157,10 @@ export default function Map({ options, center }) {
 			<button id='clear-button' ref={clearRef}>
 				지우기
 			</button>
+			<div className='measure'>
+				{measurements.length > 0 && <p>길이: {measurements.length.toFixed(2)} meters</p>}
+				{measurements.area > 0 && <p>면적: {measurements.area.toFixed(2)} square meters</p>}
+			</div>
 		</div>
 	);
 }
