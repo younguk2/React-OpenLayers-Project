@@ -1,0 +1,21 @@
+.input_addr {
+	padding-left: 1em;
+	background-color: #fcede8;
+	width: 30em;
+	font-size: 1.4em;
+	height: 2em;
+	border: none;
+	border-radius: 0.5em;
+	font-weight: 700;
+}
+.addr_btn {
+	font-weight: 800;
+	margin-top: 1em;
+	background-color: #ffd3b6;
+	border: none;
+	color: #252525;
+	border-radius: 0em;
+	width: 10em;
+	height: 2em;
+	font-size: 1.4em;
+}

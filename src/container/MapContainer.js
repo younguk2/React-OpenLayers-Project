@@ -17,6 +17,7 @@ import * as ol from 'ol';
 import { View } from 'ol';
 import SearchAddr from './controls/SearchAddr';
 import SearchXY from './controls/SearchXY';
+import DownloadMap from './controls/DownloadMap';
 /** POI 리스트 */
 const poiList = [
 	{ name: '서울역', coords: fromLonLat([126.972656, 37.5516258]), zoom: 16 },
@@ -61,6 +62,7 @@ export default function MapContainer() {
 				<Layers layers={layers} />
 				<Zoom />
 				<POIs pois={pois} />
+				<DownloadMap />
 			</MapProvider>
 
 			<MapPrimeProvider>

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useMap } from '../map/MapContext';
 import { toLonLat } from 'ol/proj';
-
+import '../../styles/View.css';
 export default function View() {
 	const { map } = useMap(); // map element
 	const [mapView, setMapView] = useState({ zoom: 0, center: [0, 0] });

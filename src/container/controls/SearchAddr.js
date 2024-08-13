@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../../styles/SearchAddr.css';
 
 export default function SearchAddr({ onLocationFound }) {
 	const [address, setAddress] = useState('');
@@ -27,8 +28,10 @@ export default function SearchAddr({ onLocationFound }) {
 
 	return (
 		<div>
-			<input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='지명을 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
-			<button onClick={handleSearch}>검색</button>
+			<input className='input_addr' type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='지명을 입력하세요' />
+			<button className='addr_btn' onClick={handleSearch}>
+				검색
+			</button>
 		</div>
 	);
 }

@@ -6,12 +6,10 @@ import { Draw } from 'ol/interaction';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import { Style, Stroke, Fill } from 'ol/style';
-import { GeometryType } from 'ol/geom';
-import Polygon, { fromCircle } from 'ol/geom/Polygon';
-import { Circle as CircleStyle } from 'ol/style';
-
 import { Circle as CircleGeometry, Point } from 'ol/geom';
 import { Feature } from 'ol';
+import '../../styles/Map.css';
+
 export default function Map({ options, center }) {
 	const mapRef = useRef(null);
 	const { setMap } = useMap();
@@ -150,7 +148,7 @@ export default function Map({ options, center }) {
 			<button id='draw-button' ref={drawRef}>
 				선 그리기
 			</button>
-			<button id='draw-circle-button' ref={circleRef}>
+			<button id='draw-poly-button' ref={circleRef}>
 				다각형 그리기
 			</button>
 			<button id='clear-button' ref={clearRef}>

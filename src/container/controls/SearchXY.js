@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useMap } from '../map/MapContext';
 import { toLonLat } from 'ol/proj';
+import '../../styles/SearchXY.css';
 export default function SearchXY({ onLocationFound, center }) {
 	const [latitude, setLatitude] = useState(''); // 위도 상태
 	const [longitude, setLongitude] = useState(''); // 경도 상태
@@ -27,9 +28,11 @@ export default function SearchXY({ onLocationFound, center }) {
 
 	return (
 		<div>
-			<input type='text' value={latitude} onChange={(e) => setLatitude(e.target.value)} placeholder='위도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
-			<input type='text' value={longitude} onChange={(e) => setLongitude(e.target.value)} placeholder='경도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
-			<button onClick={handleSearch}>이동</button>
+			<input type='text' className='input_lat' value={latitude} onChange={(e) => setLatitude(e.target.value)} placeholder='위도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
+			<input type='text' className='input_lon' value={longitude} onChange={(e) => setLongitude(e.target.value)} placeholder='경도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
+			<button onClick={handleSearch} className='trans_btn'>
+				이동
+			</button>
 		</div>
 	);
 }

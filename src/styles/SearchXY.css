@@ -1,0 +1,20 @@
+.input_lat,
+.input_lon {
+	margin-left: 1.7rem;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
+	text-align: left;
+	width: 5rem;
+}
+
+.trans_btn {
+	font-weight: 700;
+	font-size: 1.3rem;
+	margin-left: 1.5rem;
+	margin-top: 0.5rem;
+	width: 10rem;
+	height: 2rem;
+	background-color: bisque;
+	color: #252525;
+	border-radius: 0.5rem;
+}

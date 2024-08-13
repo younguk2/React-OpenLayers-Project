@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMap } from '../map/MapContext';
-
+import '../../styles/Layers.css';
 const Layers = ({ layers }) => {
 	const { map } = useMap(); // map element
 

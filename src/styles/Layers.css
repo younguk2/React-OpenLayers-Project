@@ -1,0 +1,8 @@
+.layer-list > button {
+	margin-top: 0.5rem;
+	font-size: 1.4rem;
+	margin-left: 1.5rem;
+	align-items: center;
+	width: 12rem;
+	background-color: azure;
+}
