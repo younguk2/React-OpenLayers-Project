@@ -13,9 +13,10 @@ import MapPrimeComponent from './map/MapPrime';
 import MpLayers from './controls/MpLayers';
 import { layerMappings } from './controls/MPLayerOptions';
 import { openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer } from './controls/LayerOptions';
-import Search from './controls/Search';
 import * as ol from 'ol';
 import { View } from 'ol';
+import SearchAddr from './controls/SearchAddr';
+import SearchXY from './controls/SearchXY';
 /** POI 리스트 */
 const poiList = [
 	{ name: '서울역', coords: fromLonLat([126.972656, 37.5516258]), zoom: 16 },
@@ -53,8 +54,9 @@ export default function MapContainer() {
 	return (
 		<>
 			<MapProvider>
-				<Search onLocationFound={handleLocationFound} />
-				<Map options={options} />
+				<SearchAddr onLocationFound={handleLocationFound} />
+				<SearchXY onLocationFound={handleLocationFound} center={center} />
+				<Map options={options} center={center} />
 				<Views />
 				<Layers layers={layers} />
 				<Zoom />

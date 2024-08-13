@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-export default function Search({ onLocationFound }) {
+export default function SearchAddr({ onLocationFound }) {
 	const [address, setAddress] = useState('');
 
 	const handleSearch = async () => {
@@ -27,7 +27,7 @@ export default function Search({ onLocationFound }) {
 
 	return (
 		<div>
-			<input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='Enter address' />
+			<input type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='지명을 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
 			<button onClick={handleSearch}>Search</button>
 		</div>
 	);
