@@ -27,7 +27,7 @@ export default function SearchXY({ onLocationFound, center }) {
 	};
 
 	return (
-		<div>
+		<div className='coords-container'>
 			<input type='text' className='input_lat' value={latitude} onChange={(e) => setLatitude(e.target.value)} placeholder='위도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
 			<input type='text' className='input_lon' value={longitude} onChange={(e) => setLongitude(e.target.value)} placeholder='경도를 입력하세요' style={{ width: '30vw', height: '1.5vw' }} />
 			<button onClick={handleSearch} className='trans_btn'>
