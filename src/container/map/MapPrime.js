@@ -17,24 +17,36 @@ const defaultOptions = {
 
 export default function MapPrimeComponent({ options = defaultOptions }) {
 	const mapRef = useRef(null);
-	const { setMap } = useMap();
+	const { setMap, map } = useMap();
 
 	useEffect(() => {
 		if (!mapRef.current) return;
 
-		const map = new Map({
+		const mapInstance = new Map({
 			...options,
 			target: mapRef.current, // map이 렌더링될 HTML element 지정
 		});
 
-		console.log('Map created:', map); // 콘솔 로그 추가
+		console.log('Map created:', mapInstance); // 콘솔 로그 추가
 
-		setMap(map); // 이제 (MapContainer 하위) 전역에서 map 객체 호출 가능!
+		setMap(mapInstance); // 이제 (MapContainer 하위) 전역에서 map 객체 호출 가능!
 
 		return () => {
-			map.setTarget(null); // clean up
+			mapInstance.setTarget(null); // clean up
 		};
 	}, [options, setMap]);
+
+	// options이 변경될 때마다 레이어를 업데이트
+	useEffect(() => {
+		if (map) {
+			map.setLayerGroup(
+				new Map({
+					...options,
+					layers: options.layers, // 변경된 레이어 적용
+				}).getLayerGroup()
+			);
+		}
+	}, [options, map]);
 
 	return <div className='map-container' ref={mapRef} style={{ width: '100%', height: '50vh' }}></div>;
 }

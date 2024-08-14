@@ -11,7 +11,7 @@ import Views from './controls/View';
 import { MapPrimeProvider } from './map/MapPrimeContext';
 import MapPrimeComponent from './map/MapPrime';
 import MpLayers from './controls/MpLayers';
-import { layerMappings } from './controls/MPLayerOptions';
+import { layerMappingsBlue, layerMappingsRed } from './controls/MPLayerOptions';
 import { openStreetMap, vworldBaseLayer, vworldMidnightLayer, googleRoadLayer, googleSatelliteLayer } from './controls/LayerOptions';
 import * as ol from 'ol';
 import { View } from 'ol';
@@ -33,13 +33,18 @@ export default function MapContainer() {
 	const [center, setCenter] = useState([126.972656, 37.5516258]); // 서울역 초기 위치
 	const [zoom, setZoom] = useState(16);
 
-	const handleLayerChange = (layerName) => {
-		setMPlayers([layerMappings[layerName]]);
+	const handleLayerChange = (layerName, color) => {
+		if (color === 'red') {
+			setMPlayers([layerMappingsRed[layerName]]);
+		} else if (color === 'blue') {
+			setMPlayers([layerMappingsBlue[layerName]]);
+		}
 	};
 
+	// 이벤트 리스너 (경도 위도) 값을 설정
 	const handleLocationFound = ({ lat, lng }) => {
 		setCenter([lng, lat]);
-		setZoom(11); // 지도를 찾은 위치로 줌 설정 (필요에 따라 조정 가능)
+		setZoom(16);
 	};
 
 	const options = {
@@ -67,7 +72,7 @@ export default function MapContainer() {
 
 			<MapPrimeProvider>
 				<MapPrimeComponent />
-				<MpLayers layers={mplayers} onLayerChange={handleLayerChange} availableLayers={Object.keys(layerMappings)} />
+				<MpLayers layers={mplayers} onLayerChange={handleLayerChange} availableLayers={Object.keys(layerMappingsRed, layerMappingsBlue)} />
 				<DownloadMapPrime />
 			</MapPrimeProvider>
 		</>

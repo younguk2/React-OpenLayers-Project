@@ -42,6 +42,7 @@ export default function Map({ options, center }) {
 	const { setMap } = useMap();
 	const vectorSource = useRef(new VectorSource()).current;
 
+	// 각 버튼들의 참조들
 	const drawRef = useRef(null);
 	const circleRef = useRef(null);
 	const clearRef = useRef(null);
@@ -76,8 +77,8 @@ export default function Map({ options, center }) {
 		if (type === 'LineString') {
 			return new Style({
 				stroke: new Stroke({
-					color: 'red',
-					width: 10,
+					color: 'orange',
+					width: 7,
 				}),
 				fill: new Fill({
 					color: 'red',
