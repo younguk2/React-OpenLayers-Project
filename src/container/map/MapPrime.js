@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import 'ol/ol.css';
 import { Map, View } from 'ol';
 import { fromLonLat } from 'ol/proj';
-import { useMap } from './MapPrimeContext';
+import { useMap } from './MapContext';
 import { backgroundLayer } from '../controls/MPLayerOptions';
 
 const defaultOptions = {

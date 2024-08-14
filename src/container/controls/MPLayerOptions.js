@@ -1,6 +1,6 @@
 import TileLayer from 'ol/layer/Tile';
 import { OSM, TileWMS } from 'ol/source';
-
+import '../../styles/MpLayers.css';
 // Define the background layer (OSM)
 export const backgroundLayer = new TileLayer({
 	source: new OSM(),

@@ -179,15 +179,17 @@ export default function Map({ options, center }) {
 	return (
 		<div>
 			<div className='map-container' ref={mapRef}></div>
-			<button id='draw-button' ref={drawRef}>
-				선 그리기
-			</button>
-			<button id='draw-poly-button' ref={circleRef}>
-				다각형 그리기
-			</button>
-			<button id='clear-button' ref={clearRef}>
-				지우기
-			</button>
+			<div class='button-container'>
+				<button id='draw-button' ref={drawRef}>
+					선 그리기
+				</button>
+				<button id='draw-poly-button' ref={circleRef}>
+					다각형 그리기
+				</button>
+				<button id='clear-button' ref={clearRef}>
+					지우기
+				</button>
+			</div>
 			<Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)} style={customStyles} contentLabel='측정 결과'>
 				<h2 style={modalTitleStyle}>측정 결과</h2>
 				<p style={modalContentStyle}>{message}</p>

@@ -1,4 +1,4 @@
-import { useMap } from '../map/MapPrimeContext'; // 가정: useMap 훅이 정의되어 있음
+import { useMap } from '../map/MapContext'; // 가정: useMap 훅이 정의되어 있음
 import { backgroundLayer, layerMappingsRed, layerMappingsBlue } from '../controls/MPLayerOptions';
 import { useState } from 'react';
 
@@ -23,18 +23,19 @@ const MpLayers = ({ onLayerChange, availableLayers }) => {
 	};
 
 	return (
-		<div className='layer-list'>
-			{availableLayers.map((layerName) => (
-				<button key={'layer-' + layerName} className='layer-item' onClick={() => handleLayerChange(layerName)}>
-					{layerName}
-				</button>
-			))}
+		<div className='mplayer-list'>
 			<button className='red_btn' onClick={() => handleLayerColorChange('red')}>
 				빨강
 			</button>
 			<button className='blue_btn' onClick={() => handleLayerColorChange('blue')}>
 				파랑
 			</button>
+			<br></br>
+			{availableLayers.map((layerName) => (
+				<button key={'layer-' + layerName} className='mplayer-item' onClick={() => handleLayerChange(layerName)}>
+					{layerName}
+				</button>
+			))}
 		</div>
 	);
 };

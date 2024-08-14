@@ -1,20 +1,44 @@
+.coords-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	margin-top: 0;
+}
+
 .input_lat,
 .input_lon {
-	margin-left: 1.7rem;
-	margin-bottom: 0.5rem;
-	font-size: 1rem;
-	text-align: left;
-	width: 5rem;
+	width: 30vw;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+.input_lat:focus,
+.input_lon:focus {
+	border-color: #007bff;
 }
 
 .trans_btn {
-	font-weight: 700;
-	font-size: 1.3rem;
-	margin-left: 1.5rem;
-	margin-top: 0.5rem;
-	width: 10rem;
-	height: 2rem;
-	background-color: bisque;
-	color: #252525;
-	border-radius: 0.5rem;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px 15px;
+	font-size: 16px;
+	margin-left: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.trans_btn:hover {
+	background-color: #0056b3;
+	transform: translateY(-2px);
+}
+
+.trans_btn:active {
+	background-color: #004494;
+	transform: translateY(0);
 }

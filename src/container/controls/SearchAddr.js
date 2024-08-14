@@ -27,7 +27,7 @@ export default function SearchAddr({ onLocationFound }) {
 	};
 
 	return (
-		<div>
+		<div class='search-container'>
 			<input className='input_addr' type='text' value={address} onChange={(e) => setAddress(e.target.value)} placeholder='지명을 입력하세요' />
 			<button className='addr_btn' onClick={handleSearch}>
 				검색

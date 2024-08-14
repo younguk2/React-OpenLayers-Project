@@ -19,6 +19,7 @@ import SearchAddr from './controls/SearchAddr';
 import SearchXY from './controls/SearchXY';
 import DownloadMap from './controls/DownloadMap';
 import DownloadMapPrime from './controls/DownloadMapPrime';
+import InnerMap from './controls/InnerMap';
 /** POI 리스트 */
 const poiList = [
 	{ name: '서울역', coords: fromLonLat([126.972656, 37.5516258]), zoom: 16 },
@@ -67,14 +68,9 @@ export default function MapContainer() {
 				<Layers layers={layers} />
 				<Zoom />
 				<POIs pois={pois} />
+				<MpLayers layers={mplayers} onLayerChange={handleLayerChange} availableLayers={Object.keys(layerMappingsRed, layerMappingsBlue)} />
 				<DownloadMap />
 			</MapProvider>
-
-			<MapPrimeProvider>
-				<MapPrimeComponent />
-				<MpLayers layers={mplayers} onLayerChange={handleLayerChange} availableLayers={Object.keys(layerMappingsRed, layerMappingsBlue)} />
-				<DownloadMapPrime />
-			</MapPrimeProvider>
 		</>
 	);
 }

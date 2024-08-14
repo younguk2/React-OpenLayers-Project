@@ -1,0 +1,50 @@
+.mplayer-list {
+	position: fixed; /* 화면의 고정된 위치에 배치 */
+	bottom: 20px; /* 화면 하단에서의 여백 */
+	left: 50%; /* 화면 중앙에서의 가로 위치 설정 */
+	transform: translateX(-50%); /* 중앙 정렬을 위한 변환 */
+	display: flex;
+	align-items: center; /* 버튼들을 세로로 중앙 정렬 */
+	gap: 10px; /* 버튼 사이의 간격 */
+}
+
+.mplayer-list > button {
+	font-size: 1rem; /* 글자 크기 설정 */
+	width: 120px; /* 버튼 너비 설정 */
+	padding: 8px; /* 버튼 내부 여백 설정 */
+	border: none;
+	border-radius: 5px; /* 버튼 테두리 둥글기 설정 */
+	cursor: pointer; /* 마우스 커서 포인터로 변경 */
+	transition: background-color 0.3s ease, transform 0.3s ease; /* 부드러운 효과 설정 */
+}
+
+.red_btn {
+	background-color: #ff4d4d; /* 빨강색 배경 */
+	color: white; /* 글자 색상 흰색 */
+}
+
+.red_btn:hover {
+	background-color: #e60000; /* 호버 시 배경색 변경 */
+	transform: scale(1.05); /* 호버 시 살짝 확대 */
+}
+
+.blue_btn {
+	background-color: #4d79ff; /* 파랑색 배경 */
+	color: white; /* 글자 색상 흰색 */
+}
+
+.blue_btn:hover {
+	background-color: #0033cc; /* 호버 시 배경색 변경 */
+	transform: scale(1.05); /* 호버 시 살짝 확대 */
+}
+
+.mplayer-item {
+	background-color: #f0f0f0; /* 기본 배경색 */
+	color: #333; /* 글자 색상 */
+	border: 1px solid #ddd; /* 버튼 테두리 색상 */
+}
+
+.mplayer-item:hover {
+	background-color: #ddd; /* 호버 시 배경색 변경 */
+	transform: scale(1.05); /* 호버 시 살짝 확대 */
+}
