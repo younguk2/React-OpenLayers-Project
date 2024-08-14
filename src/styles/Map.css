@@ -29,7 +29,7 @@
 #draw-button,
 #draw-poly-button,
 #clear-button :hover {
-	background-color: #007bff; /* 버튼 호버 시 배경 색상 */
+	background-color: #ec2c2c; /* 버튼 호버 시 배경 색상 */
 	transform: translateY(-2px); /* 버튼 상승 효과 */
 }
 
