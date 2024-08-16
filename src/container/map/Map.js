@@ -7,7 +7,7 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import { Style, Stroke, Fill } from 'ol/style';
 import { getLength, getArea } from 'ol/sphere'; // ol/sphere 모듈을 추가
-import '../../styles/Map.css';
+import '../../styles/Map.module.css';
 import Modal from 'react-modal'; // react-modal 임포트
 
 // 모달 스타일 설정

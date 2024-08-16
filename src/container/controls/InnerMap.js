@@ -5,6 +5,9 @@ export default function InnerMap() {
 
 	const counter = (count) => {
 		setCount(count + 1);
+		if (1 == 1) {
+			console.log('haha');
+		}
 	};
 
 	useEffect(() => {}, [count]);
