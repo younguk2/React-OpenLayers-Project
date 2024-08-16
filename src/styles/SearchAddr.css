@@ -2,7 +2,6 @@
 .search-container {
 	display: flex;
 	align-items: center; /* 수직 중앙 정렬 */
-	margin-bottom: 20px; /* 컨테이너 아래 여백 */
 	margin-right: 15rem;
 	margin-left: 15rem;
 	margin-top: 0.1rem;
